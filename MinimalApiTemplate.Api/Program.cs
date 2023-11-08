@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 builder.Services.AddDbContext<DataContext>(opt =>
         opt.UseNpgsql(builder.Configuration.GetConnectionString("MinimalApiTemplate")).EnableDetailedErrors());
 
@@ -23,8 +25,11 @@ builder.Services.AddCarter();
 
 var app = builder.Build();
 
-var context = app.Services.GetRequiredService<DataContext>();
-await context.Database.MigrateAsync();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
