@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zxE9QGjHWhFKBIZARDmI0D0HFTDmDGNVHWoq9MmW5KQ=",
+  "Source": "MinimalApiTemplate.Api",
+  "BasePath": "_content/MinimalApiTemplate.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
