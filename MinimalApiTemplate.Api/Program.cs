@@ -23,6 +23,8 @@ builder.Services.AddCarter();
 
 var app = builder.Build();
 
+app.MapGet("/health", () => Results.Ok("Working successfully!"));
+
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<DataContext>();
